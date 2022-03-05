@@ -23,19 +23,22 @@ class Shop extends StatelessWidget {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   Item item = items.elementAt(index);
-                  return ListTile(
-                    title: Text(item.name),
-                    subtitle: Text(item.price.toString()),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        Provider.of<CartProvider>(
-                          context,
-                          listen: false,
-                        ).removeItem(
-                          item,
-                        );
-                      },
+                  return Card(
+                    elevation: 5,
+                    child: ListTile(
+                      title: Text(item.name),
+                      subtitle: Text(item.price.toString()),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          Provider.of<CartProvider>(
+                            context,
+                            listen: false,
+                          ).removeItem(
+                            item,
+                          );
+                        },
+                      ),
                     ),
                   );
                 }),
